@@ -1,0 +1,32 @@
+# Dependencias
+node_modules
+
+# Build
+dist
+dist-ssr
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Deploy
+.vercel
+.wrangler
+
+# Claude Code (config local)
+.claude/settings.local.json
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.sw?
