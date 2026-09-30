@@ -1,0 +1,2 @@
+# Excluir las skills de Claude de las estadísticas de lenguajes de GitHub
+.claude/** linguist-vendored

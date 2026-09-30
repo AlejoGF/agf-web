@@ -67,12 +67,6 @@ No hay tests configurados.
 - Nunca `dangerouslySetInnerHTML` ni `eval`.
 - Verificar con `npm run build` que `dist/index.html` no tenga scripts inline.
 
-## Git: commits y push
+## Git
 
-El usuario hace **todos** los commits y push manualmente; nunca ejecutar `git commit` ni `git push`. Al completar una unidad de trabajo con sentido propio, avisar con un bloque **📌 Momento de commit** que incluya:
-
-1. Por qué es momento de commitear.
-2. Tiempo realista que le llevaría a una persona ese trabajo, y si conviene dividirlo en varios commits espaciados en tiempo real para un historial natural (sin falsear fechas).
-3. Paso a paso con los comandos exactos (`git status`, `git add <archivos>`, `git commit`, `git push`) y qué verificar en cada uno.
-4. Mensaje de commit recomendado: Conventional Commits **simple**, en inglés, corto y claro (`feat:`, `fix:`, `chore:`, `docs:`, `style:`, `refactor:`). Sin scopes (`feat(router):`) ni mensajes largos o excesivamente técnicos: el historial debe verse profesional pero acorde a un perfil junior. Ej.: `feat: add security headers for deploy`.
-5. Cómo verificar que el push llegó bien a GitHub.
+Los commits y el push los hace el usuario manualmente: no ejecutar `git commit` ni `git push`. Mensajes en Conventional Commits simple, en inglés (`feat: add header navigation`).
