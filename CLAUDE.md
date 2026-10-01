@@ -27,35 +27,42 @@ No hay tests configurados.
 
 ## Arquitectura
 
-- `src/main.jsx` monta `<BrowserRouter>` → `App.jsx` define las rutas:
+- `src/main.jsx` importa los estilos globales (`fonts.css` → `tokens.css` → `global.css`) y monta `ThemeProvider` → `LanguageProvider` → `<BrowserRouter>` → `App.jsx`, que define las rutas:
   - `/` → `pages/Home.jsx`, que compone las secciones de `src/sections/` en orden: Hero, About, Experience, Education, Skills, Projects, Contact (cada una es un `<section id="...">` para navegación por anclas).
   - `/proyectos/:slug` → `pages/ProjectPage.jsx`, busca el proyecto por `slug` en `src/data/projects.js`; si no existe renderiza `NotFound`.
   - `*` → `pages/NotFound.jsx`.
 - `src/data/projects.js` es la única fuente de datos de proyectos (la sección Projects y la página de caso de estudio leen de ahí).
-- `src/context/` (idioma, tema), `src/hooks/` y `src/components/` (piezas reutilizables) están preparados pero aún vacíos.
+- **Contextos (tema e idioma):** cada uno se divide en `context/XContext.js` (solo `createContext`), `context/XProvider.jsx` (el componente con el estado) y `hooks/useX.js` (el hook que lo consume). La división es para que oxlint (`react/only-export-components`) no marque archivos que exportan componentes y no-componentes juntos. Los componentes usan siempre el hook (`useTheme`, `useTranslation`), nunca el contexto directo.
+- `src/components/` tiene las piezas reutilizables (por ahora `ThemeToggle` y `LanguageToggle`, ubicados en un header provisorio dentro de `App.jsx`).
 
 ## Diseño
 
 - Usar la skill **ui-ux-pro-max** para decisiones de diseño, pero implementar siempre en React + CSS plano (ignorar las partes de Tailwind/shadcn de las skills en `.claude/skills/`).
-- **Design tokens:** todos los colores, tipografías, espaciados, radios, sombras y duraciones son variables CSS en `:root` dentro de `src/styles/tokens.css`. Nunca hardcodear esos valores en los `.css` de componentes. `src/styles/global.css` queda para reset y estilos base.
-- **Color principal:** `#6c63ff`.
+- **Estilo:** minimalista moderno. Sombras suaves pero visibles (`--shadow-sm/md/lg`), pocos bordes, esquinas redondeadas, animaciones cortas y sutiles.
+- **Design tokens:** todos los colores, tipografías, espaciados, radios, sombras y duraciones son variables CSS en `:root` dentro de `src/styles/tokens.css`. Nunca hardcodear esos valores en los `.css` de componentes. `src/styles/global.css` queda para reset y estilos base (incluye `:focus-visible`, `prefers-reduced-motion` y la clase `.visually-hidden`).
+- **Color:** un violeta por tema, en `--color-primary`: `#5a52e0` en claro y `#8b85ff` en oscuro (en oscuro los botones primarios llevan texto oscuro, `--color-on-primary`). `#6c63ff` (`--color-brand`) es el color de marca y es **solo decorativo**: no cumple 4.5:1 como texto. Verificar el contraste de cualquier color nuevo en ambos temas.
+- **Tipografía:** Space Grotesk (títulos, `--font-heading`) y DM Sans (texto, `--font-body`), de Google Fonts pero servidas desde `public/fonts/` (`src/styles/fonts.css`); subset latino, fuentes variables.
+- **Logo:** texto "AGF" en la fuente de títulos seguido de un "." en `--color-primary`.
 - **Modo oscuro:** `[data-theme="dark"]` en `<html>` redefine las mismas variables; los componentes no necesitan saber qué tema está activo.
 - **Mobile first**; verificar en 375, 768, 1024 y 1440 px.
+- **Imágenes:** ilustraciones vectoriales (SVG) que representen al usuario, no fotos de stock. **Logos de tecnologías** como badges con SVG guardados en el proyecto (por ejemplo de Simple Icons, CC0): la CSP bloquea badges externos como shields.io. Lucide no incluye logos de marcas.
 
-### Tema sin parpadeo (pendiente: implementarlo junto con el ThemeContext)
+### Tema sin parpadeo
 
-`public/theme-init.js` es un script externo (no módulo, sin `defer`) cargado en el `<head>` de `index.html` con `<script src="/theme-init.js"></script>`. Lee la preferencia guardada en `localStorage` o, si no hay, `prefers-color-scheme`, y aplica `data-theme` en `<html>` antes de que cargue React. El ThemeContext parte de ese valor y usa la misma clave de `localStorage`. Al ser un archivo propio del sitio, cumple `script-src 'self'` sin hashes.
+`public/theme-init.js` es un script externo (no módulo, sin `defer`) cargado en el `<head>` de `index.html`. Lee la preferencia guardada en `localStorage` (clave `agf-theme`) o, si no hay, `prefers-color-scheme`, y aplica `data-theme` en `<html>` antes de que cargue React. `ThemeProvider` parte de ese valor, guarda la elección con la misma clave y, si el usuario nunca eligió, sigue los cambios del sistema. Al ser un archivo propio del sitio, cumple `script-src 'self'` sin hashes.
 
 ## Idiomas
 
-- Todo texto visible sale de `src/i18n/es.json` / `en.json` (nunca strings sueltos en JSX). Español por defecto, toggle ES/EN, sin librerías de i18n.
+- Todo texto visible (y los `aria-label`) sale de `src/i18n/es.json` / `en.json`, nunca strings sueltos en JSX. Español por defecto, toggle ES/EN, sin librerías de i18n.
+- En componentes: `const { t, language, setLanguage } = useTranslation()` y `t('seccion.clave')`. Toda clave nueva va en **los dos** `.json` con la misma estructura; si falta en inglés se muestra la versión en español y en desarrollo aparece un `console.warn`.
+- `src/i18n/index.js` exporta los diccionarios, `DEFAULT_LANGUAGE` y `LANGUAGE_NAMES` (cada idioma nombrado en su propio idioma). `LanguageProvider` guarda la elección en `localStorage` (clave `agf-lang`) y actualiza `<html lang>`.
 - Los proyectos en `src/data/projects.js` tienen sus textos en ambos idiomas.
 
 ## Accesibilidad
 
 - HTML semántico, **un solo `<h1>` por página**, `alt` en todas las imágenes.
 - Foco visible, navegación completa por teclado, contraste mínimo 4.5:1.
-- Respetar `prefers-reduced-motion`.
+- Respetar `prefers-reduced-motion` (`global.css` anula animaciones y transiciones). Excepción: el fundido de cambio de tema (View Transitions, `--duration-theme`) se mantiene porque es solo opacidad.
 - Íconos solo con Lucide React; nunca emojis en la UI.
 
 ## Seguridad y deploy

@@ -1,3 +1,6 @@
+import { useTranslation } from '../hooks/useTranslation.js'
+
 export default function Skills() {
-  return <section id="skills">Skills</section>
+  const { t } = useTranslation()
+  return <section id="skills">{t('sections.skills')}</section>
 }

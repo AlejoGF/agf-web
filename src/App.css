@@ -1,0 +1,7 @@
+.app-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--container-padding);
+}

@@ -1,3 +1,6 @@
+import { useTranslation } from '../hooks/useTranslation.js'
+
 export default function Hero() {
-  return <section id="hero">Hero</section>
+  const { t } = useTranslation()
+  return <section id="hero">{t('sections.hero')}</section>
 }

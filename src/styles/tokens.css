@@ -1,0 +1,108 @@
+/*
+ * Design tokens. Todos los valores visuales del sitio salen de acá.
+ * Breakpoints (mobile first, usar en @media con min-width):
+ *   768px (tablet) · 1024px (desktop) · 1440px (desktop grande)
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Colores: modo claro (todas las combinaciones de texto cumplen >= 4.5:1) */
+  --color-bg: #fafafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f1f6;
+  --color-text: #16161d;
+  --color-text-muted: #56566b;
+  --color-border: #e4e4ec;
+  --color-primary: #5a52e0;
+  --color-primary-hover: #4a42cc;
+  --color-on-primary: #ffffff;
+  --color-primary-soft: rgb(90 82 224 / 0.1);
+  --color-focus: #5a52e0;
+  --color-brand: #6c63ff; /* solo decorativo (logo, favicon); no usar para texto */
+
+  /* Sombras: suaves pero visibles, en capas */
+  --shadow-color: 240 20% 20%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 2px 6px hsl(var(--shadow-color) / 0.06);
+  --shadow-md: 0 2px 4px hsl(var(--shadow-color) / 0.05), 0 8px 24px -4px hsl(var(--shadow-color) / 0.12);
+  --shadow-lg: 0 4px 8px hsl(var(--shadow-color) / 0.05), 0 20px 40px -8px hsl(var(--shadow-color) / 0.18);
+
+  /* Tipografía */
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 2rem;     /* 32px */
+  --text-4xl: clamp(2.25rem, 1.6rem + 3vw, 3.5rem); /* 36px → 56px */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --tracking-tight: -0.02em;
+
+  /* Espaciado: escala de 8px (con 4px para ajustes finos) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Layout */
+  --container-max: 72rem; /* 1152px */
+  --container-padding: var(--space-6);
+  --measure: 65ch;        /* ancho máximo de párrafos */
+  --tap-target: 2.75rem;  /* 44px */
+
+  /* Radios */
+  --radius-sm: 0.5rem;   /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-full: 9999px;
+
+  /* Movimiento */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-theme: 500ms; /* fundido al cambiar de tema */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Capas */
+  --z-base: 0;
+  --z-header: 100;
+  --z-overlay: 1000;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0f0f14;
+  --color-surface: #18181f;
+  --color-surface-2: #21212b;
+  --color-text: #ececf3;
+  --color-text-muted: #a1a1b5;
+  --color-border: #2c2c38;
+  --color-primary: #8b85ff;
+  --color-primary-hover: #a5a0ff;
+  --color-on-primary: #0f0f14;
+  --color-primary-soft: rgb(139 133 255 / 0.14);
+  --color-focus: #8b85ff;
+
+  --shadow-color: 240 30% 2%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.4), 0 2px 6px hsl(var(--shadow-color) / 0.3);
+  --shadow-md: 0 2px 4px hsl(var(--shadow-color) / 0.35), 0 8px 24px -4px hsl(var(--shadow-color) / 0.5);
+  --shadow-lg: 0 4px 8px hsl(var(--shadow-color) / 0.35), 0 20px 40px -8px hsl(var(--shadow-color) / 0.6);
+}
