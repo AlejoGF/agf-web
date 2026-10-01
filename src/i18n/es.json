@@ -4,7 +4,15 @@
     "toLight": "Activar modo claro"
   },
   "language": {
-    "label": "Idioma"
+    "switch": "Cambiar idioma a inglés"
+  },
+  "nav": {
+    "label": "Navegación principal",
+    "home": "AGF, ir al inicio",
+    "skipToContent": "Saltar al contenido",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "downloadCv": "Descargar CV"
   },
   "sections": {
     "hero": "Inicio",

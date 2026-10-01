@@ -8,7 +8,7 @@ import Contact from '../sections/Contact.jsx'
 
 export default function Home() {
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       <Hero />
       <About />
       <Experience />

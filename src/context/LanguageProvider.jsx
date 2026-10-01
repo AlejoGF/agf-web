@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { LanguageContext } from './LanguageContext.js'
 import { DEFAULT_LANGUAGE, dictionaries } from '../i18n/index.js'
 
@@ -27,7 +28,13 @@ export default function LanguageProvider({ children }) {
 
   const setLanguage = useCallback((next) => {
     if (!(next in dictionaries)) return
-    setLanguageState(next)
+
+    // Mismo fundido que el cambio de tema, para que el cambio de textos
+    // (y del ancho del header) no sea brusco. Sin soporte, el cambio es directo.
+    const apply = () => flushSync(() => setLanguageState(next))
+    if (document.startViewTransition) document.startViewTransition(apply)
+    else apply()
+
     try {
       localStorage.setItem(STORAGE_KEY, next)
     } catch {

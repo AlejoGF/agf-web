@@ -33,7 +33,8 @@ No hay tests configurados.
   - `*` → `pages/NotFound.jsx`.
 - `src/data/projects.js` es la única fuente de datos de proyectos (la sección Projects y la página de caso de estudio leen de ahí).
 - **Contextos (tema e idioma):** cada uno se divide en `context/XContext.js` (solo `createContext`), `context/XProvider.jsx` (el componente con el estado) y `hooks/useX.js` (el hook que lo consume). La división es para que oxlint (`react/only-export-components`) no marque archivos que exportan componentes y no-componentes juntos. Los componentes usan siempre el hook (`useTheme`, `useTranslation`), nunca el contexto directo.
-- `src/components/` tiene las piezas reutilizables (por ahora `ThemeToggle` y `LanguageToggle`, ubicados en un header provisorio dentro de `App.jsx`).
+- `App.jsx` renderiza `ScrollManager` (scroll a `/#seccion` y al cambiar de página: animado propio con easing, o fundido con View Transitions si hay `prefers-reduced-motion`) y `Header` (cápsula flotante centrada: logo, links a secciones con la activa resaltada vía `useActiveSection`, `LanguageToggle`, `ThemeToggle`, botón de CV en prueba; en < 1024px los links pasan a un menú desplegable).
+- Cada página tiene un único `<main id="main" tabIndex={-1}>`, destino del link "Saltar al contenido".
 
 ## Diseño
 
@@ -55,14 +56,14 @@ No hay tests configurados.
 
 - Todo texto visible (y los `aria-label`) sale de `src/i18n/es.json` / `en.json`, nunca strings sueltos en JSX. Español por defecto, toggle ES/EN, sin librerías de i18n.
 - En componentes: `const { t, language, setLanguage } = useTranslation()` y `t('seccion.clave')`. Toda clave nueva va en **los dos** `.json` con la misma estructura; si falta en inglés se muestra la versión en español y en desarrollo aparece un `console.warn`.
-- `src/i18n/index.js` exporta los diccionarios, `DEFAULT_LANGUAGE` y `LANGUAGE_NAMES` (cada idioma nombrado en su propio idioma). `LanguageProvider` guarda la elección en `localStorage` (clave `agf-lang`) y actualiza `<html lang>`.
+- `src/i18n/index.js` exporta los diccionarios, `DEFAULT_LANGUAGE` y `LANGUAGES`. `LanguageProvider` guarda la elección en `localStorage` (clave `agf-lang`) y actualiza `<html lang>`.
 - Los proyectos en `src/data/projects.js` tienen sus textos en ambos idiomas.
 
 ## Accesibilidad
 
 - HTML semántico, **un solo `<h1>` por página**, `alt` en todas las imágenes.
 - Foco visible, navegación completa por teclado, contraste mínimo 4.5:1.
-- Respetar `prefers-reduced-motion` (`global.css` anula animaciones y transiciones). Excepción: el fundido de cambio de tema (View Transitions, `--duration-theme`) se mantiene porque es solo opacidad.
+- Respetar `prefers-reduced-motion` (`global.css` anula animaciones y transiciones). Excepción: el fundido al cambiar de tema o de idioma (View Transitions, `--duration-theme`) se mantiene porque es solo opacidad; con reducción de movimiento, la navegación por anclas también usa ese fundido en vez de desplazarse.
 - Íconos solo con Lucide React; nunca emojis en la UI.
 
 ## Seguridad y deploy

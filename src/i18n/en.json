@@ -4,7 +4,15 @@
     "toLight": "Switch to light mode"
   },
   "language": {
-    "label": "Language"
+    "switch": "Switch language to Spanish"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "home": "AGF, go to home",
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "downloadCv": "Download CV"
   },
   "sections": {
     "hero": "Home",

@@ -11,7 +11,7 @@ export default function ProjectPage() {
   if (!project) return <NotFound />
 
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       <h1>{project.slug}</h1>
       <Link to="/#projects">{t('project.back')}</Link>
     </main>
