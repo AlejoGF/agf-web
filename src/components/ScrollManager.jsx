@@ -63,7 +63,7 @@ function getTargetTop(hash) {
 // React Router no hace scroll solo: esto lleva a la sección del hash (/#projects)
 // o arriba de todo al cambiar de página.
 export default function ScrollManager() {
-  const { pathname, hash, key } = useLocation()
+  const { pathname, hash, key, state } = useLocation()
   const previousPathname = useRef(null)
 
   useEffect(() => {
@@ -74,16 +74,24 @@ export default function ScrollManager() {
     const top = getTargetTop(hash)
     if (top === null) return
 
+    // Después de ir a la sección, la URL queda limpia (sin #seccion), porque al
+    // seguir scrolleando dejaría de coincidir con lo que se ve. Se conserva el
+    // history.state para que React Router siga funcionando con atrás/adelante.
+    if (hash) {
+      window.history.replaceState(window.history.state, '', pathname + window.location.search)
+    }
+
     // Al entrar al sitio o cambiar de página: ir directo, sin animación
     if (!isSamePage) {
       if (!isFirstLoad || hash) jumpTo(top)
       return
     }
 
+    // Un link puede pedir scroll animado siempre con state={{ smoothScroll: true }}
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduceMotion) fadeTo(top)
+    if (reduceMotion && !state?.smoothScroll) fadeTo(top)
     else animateScrollTo(top)
-  }, [pathname, hash, key])
+  }, [pathname, hash, key, state])
 
   return null
 }

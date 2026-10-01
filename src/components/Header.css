@@ -98,6 +98,7 @@
 }
 
 .site-header__link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: var(--tap-target);
@@ -117,9 +118,31 @@
   color: var(--color-text);
 }
 
+/* Subrayado de la sección activa: crece de izquierda a derecha al activarse
+   y se retira hacia la derecha al pasar a otra sección */
+.site-header__link::after {
+  content: '';
+  position: absolute;
+  right: var(--space-3);
+  bottom: 0.6rem;
+  left: var(--space-3);
+  height: 2px;
+  border-radius: var(--radius-full);
+  /* Siempre el color del texto: violeta si es la sección activa, el del hover si no */
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
 .site-header__link[aria-current='true'] {
   color: var(--color-primary);
-  background-color: var(--color-primary-soft);
+}
+
+.site-header__link:hover::after,
+.site-header__link[aria-current='true']::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .site-header__actions {
