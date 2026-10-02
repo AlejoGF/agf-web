@@ -20,6 +20,8 @@
   --color-primary-soft: rgb(90 82 224 / 0.1);
   --color-focus: #5a52e0;
   --color-scrim: rgb(22 22 29 / 0.35); /* fondo oscurecido detrás del menú mobile */
+  --color-glow-1: rgb(90 82 224 / 0.16);  /* luces del fondo animado */
+  --color-glow-2: rgb(108 99 255 / 0.13);
   --color-brand: #6c63ff; /* solo decorativo (logo, favicon); no usar para texto */
 
   /* Sombras: suaves pero visibles, en capas */
@@ -40,6 +42,7 @@
   --text-2xl: 1.5rem;   /* 24px */
   --text-3xl: 2rem;     /* 32px */
   --text-4xl: clamp(2.25rem, 1.6rem + 3vw, 3.5rem); /* 36px → 56px */
+  --text-5xl: clamp(2.5rem, 1.6rem + 4.5vw, 4.5rem); /* 40px → 72px, nombre del Hero */
 
   --weight-regular: 400;
   --weight-medium: 500;
@@ -104,6 +107,8 @@
   --color-primary-soft: rgb(139 133 255 / 0.14);
   --color-focus: #8b85ff;
   --color-scrim: rgb(0 0 0 / 0.55);
+  --color-glow-1: rgb(139 133 255 / 0.15);
+  --color-glow-2: rgb(108 99 255 / 0.12);
 
   --shadow-color: 240 30% 2%;
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.4), 0 2px 6px hsl(var(--shadow-color) / 0.3);

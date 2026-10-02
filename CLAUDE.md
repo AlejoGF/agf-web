@@ -46,7 +46,7 @@ No hay tests configurados.
 - **Logo:** texto "AGF" en la fuente de títulos seguido de un "." en `--color-primary`.
 - **Modo oscuro:** `[data-theme="dark"]` en `<html>` redefine las mismas variables; los componentes no necesitan saber qué tema está activo.
 - **Mobile first**; verificar en 375, 768, 1024 y 1440 px.
-- **Imágenes:** ilustraciones vectoriales (SVG) que representen al usuario, no fotos de stock. **Logos de tecnologías** como badges con SVG guardados en el proyecto (por ejemplo de Simple Icons, CC0): la CSP bloquea badges externos como shields.io. Lucide no incluye logos de marcas.
+- **Imágenes:** ilustraciones vectoriales (SVG) que representen al usuario, no fotos de stock. **Logos de tecnologías:** se guardan como datos en `src/data/techLogos.js` (path SVG de Simple Icons, CC0, + color de marca) y se dibujan con `<TechLogo id="react" />`, que usa `currentColor`. Las redes sociales están en `src/data/socialLinks.js` (LinkedIn es un dibujo propio porque no está en Simple Icons) y ambos usan `<BrandIcon />`. Para sumar uno, copiar el `path` del SVG de simpleicons.org. La CSP bloquea badges externos como shields.io, y Lucide no incluye logos de marcas.
 
 ### Tema sin parpadeo
 
@@ -63,7 +63,7 @@ No hay tests configurados.
 
 - HTML semántico, **un solo `<h1>` por página**, `alt` en todas las imágenes.
 - Foco visible, navegación completa por teclado, contraste mínimo 4.5:1.
-- Respetar `prefers-reduced-motion` (`global.css` anula animaciones y transiciones). Excepción: el fundido al cambiar de tema o de idioma (View Transitions, `--duration-theme`) se mantiene porque es solo opacidad; con reducción de movimiento, la navegación por anclas también usa ese fundido en vez de desplazarse.
+- Respetar `prefers-reduced-motion`: `global.css` apaga las animaciones (rebotes, pulsos, fondo animado) pero mantiene las transiciones cortas de estado (hover, subrayado, colores). Excepción pedida por el usuario: la flecha del Hero rebota y hace scroll animado siempre (`state={{ smoothScroll: true }}` en el Link). Excepción: el fundido al cambiar de tema o de idioma (View Transitions, `--duration-theme`) se mantiene porque es solo opacidad; con reducción de movimiento, la navegación por anclas también usa ese fundido en vez de desplazarse.
 - Íconos solo con Lucide React; nunca emojis en la UI.
 
 ## Seguridad y deploy

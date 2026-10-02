@@ -29,5 +29,38 @@
   "notFound": {
     "title": "Page not found",
     "back": "Back to home"
+  },
+  "hero": {
+    "available": "Available for new projects",
+    "name": "Alejo Gonzalez Fittipaldi",
+    "role": "UX/UI Designer & Frontend Developer",
+    "lead": "I combine UX/UI design, frontend development and product thinking to build websites and online stores.",
+    "ctaProjects": "View projects",
+    "ctaContact": "Contact me",
+    "scrollDown": "Go to the next section"
+  },
+  "about": {
+    "paragraphs": [
+      "For more than 7 years I've been designing and building digital products, focused on websites and online stores.",
+      "I started as a web designer and grew into the role of Product Expert. Along the way, I led end-to-end web projects for more than 50 retail, wholesale and B2B clients.",
+      "What defines me most is my client focus: I understand what the business needs, manage expectations and turn requirements into clear solutions that can grow with the brand.",
+      "Today I bring frontend development together with my design and product experience, and I am looking for new projects and teams where I can contribute that dual perspective."
+    ],
+    "stats": [
+      {
+        "value": "7+",
+        "label": "Years of experience"
+      },
+      {
+        "value": "50+",
+        "label": "Web projects"
+      }
+    ],
+    "socialTitle": "Social",
+    "locationLabel": "Location",
+    "location": "Rosario, Argentina"
+  },
+  "common": {
+    "newTab": "opens in a new tab"
   }
 }

@@ -29,6 +29,39 @@ body {
     color var(--duration-base) var(--ease-in-out);
 }
 
+/* Fondo animado: dos luces violetas muy suaves que se desplazan lento
+   detrás de todo el contenido. Con prefers-reduced-motion quedan quietas. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 25% 30%, var(--color-glow-1), transparent 35%),
+    radial-gradient(circle at 75% 70%, var(--color-glow-2), transparent 40%);
+  /* El desenfoque evita los "anillos" que hacen los degradados muy tenues */
+  filter: blur(60px);
+  animation: background-drift 30s var(--ease-in-out) infinite alternate;
+}
+
+/* Grano muy fino encima de las luces: disimula los "escalones" del degradado */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
+@keyframes background-drift {
+  to {
+    transform: translate(6%, -4%) rotate(8deg);
+  }
+}
+
 h1,
 h2,
 h3,
@@ -110,6 +143,12 @@ section[id] {
   scroll-margin-top: calc(var(--header-height) + var(--space-4));
 }
 
+/* Título (h2) de cada sección */
+.section-title {
+  margin-bottom: var(--space-8);
+  font-size: var(--text-3xl);
+}
+
 /* Texto solo para lectores de pantalla */
 .visually-hidden {
   position: absolute;
@@ -123,12 +162,13 @@ section[id] {
   border: 0;
 }
 
+/* Reducir movimiento: se apagan las animaciones (rebotes, pulsos, fondo animado).
+   Las transiciones cortas de estado (hover, subrayado, colores) se mantienen. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

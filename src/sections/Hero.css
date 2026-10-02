@@ -1,0 +1,177 @@
+/* Ocupa toda la pantalla visible debajo del header, con el contenido centrado */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  padding-block: var(--space-12) var(--space-24);
+  text-align: center;
+}
+
+/* Cartel "Disponible para nuevos proyectos" */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.hero__dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+/* Pulso suave del punto (se desactiva con prefers-reduced-motion) */
+.hero__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: inherit;
+  animation: hero-pulse 2s var(--ease-out) infinite;
+}
+
+@keyframes hero-pulse {
+  to {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+.hero__name {
+  font-size: var(--text-5xl);
+  max-width: 18ch;
+}
+
+.hero__role {
+  margin-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-primary);
+}
+
+.hero__lead {
+  max-width: 40ch;
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target);
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.hero__button:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.hero__button:focus-visible {
+  border-radius: var(--radius-full);
+}
+
+.hero__button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.hero__button--primary:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-on-primary);
+}
+
+.hero__button--secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.hero__button--secondary:hover {
+  color: var(--color-text);
+}
+
+.hero__button svg {
+  flex-shrink: 0;
+}
+
+/* Flecha para bajar a la primera sección */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-12);
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: var(--tap-target);
+  height: var(--tap-target);
+  margin-left: calc(var(--tap-target) / -2);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  animation: hero-bounce 1.8s var(--ease-in-out) infinite;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.hero__scroll:hover {
+  color: var(--color-primary);
+}
+
+.hero__scroll:focus-visible {
+  border-radius: var(--radius-full);
+}
+
+@keyframes hero-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(var(--space-2));
+  }
+}
+
+/* Excepción (decisión de diseño): el rebote de la flecha se mantiene aunque
+   el usuario prefiera reducir movimiento. Es chico y lento. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll {
+    animation-duration: 1.8s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__role {
+    font-size: var(--text-2xl);
+  }
+}
