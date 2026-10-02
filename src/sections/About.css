@@ -90,17 +90,24 @@
   height: var(--tap-target);
   border-radius: var(--radius-full);
   background-color: var(--color-surface-2);
-  color: var(--color-text-muted);
+  /* Logos: color original en modo claro; gris en modo oscuro y color original en hover */
+  color: var(--brand);
   transition:
     color var(--duration-fast) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out),
     transform var(--duration-fast) var(--ease-out);
 }
 
 .about__social-link:hover {
-  color: var(--color-primary);
-  background-color: var(--color-primary-soft);
+  color: var(--brand);
   transform: translateY(-2px);
+}
+
+[data-theme='dark'] .about__social-link {
+  color: var(--color-text-muted);
+}
+
+[data-theme='dark'] .about__social-link:hover {
+  color: var(--brand-dark, var(--brand));
 }
 
 .about__social-link:focus-visible {

@@ -27,8 +27,7 @@ export default function Hero() {
         </Link>
       </div>
 
-      {/* state.smoothScroll: siempre scroll animado, aunque se prefiera reducir movimiento */}
-      <Link to="/#about" state={{ smoothScroll: true }} className="hero__scroll" aria-label={t('hero.scrollDown')} title={t('hero.scrollDown')}>
+      <Link to="/#about" className="hero__scroll" aria-label={t('hero.scrollDown')} title={t('hero.scrollDown')}>
         <ChevronDown size={24} aria-hidden="true" />
       </Link>
     </section>

@@ -148,7 +148,7 @@
 .site-header__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-2); /* 8px mínimo entre elementos táctiles */
   margin-left: auto;
 }
 

@@ -161,15 +161,6 @@
   }
 }
 
-/* Excepción (decisión de diseño): el rebote de la flecha se mantiene aunque
-   el usuario prefiera reducir movimiento. Es chico y lento. */
-@media (prefers-reduced-motion: reduce) {
-  .hero__scroll {
-    animation-duration: 1.8s !important;
-    animation-iteration-count: infinite !important;
-  }
-}
-
 @media (min-width: 768px) {
   .hero__role {
     font-size: var(--text-2xl);

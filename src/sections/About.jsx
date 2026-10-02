@@ -39,6 +39,7 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="about__social-link"
+                    style={{ '--brand': link.color, '--brand-dark': link.colorDark }}
                     aria-label={`${link.name} (${t('common.newTab')})`}
                     title={link.name}
                   >
