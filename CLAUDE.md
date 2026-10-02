@@ -46,6 +46,7 @@ No hay tests configurados.
 - **Logo:** texto "AGF" en la fuente de títulos seguido de un "." en `--color-primary`.
 - **Modo oscuro:** `[data-theme="dark"]` en `<html>` redefine las mismas variables; los componentes no necesitan saber qué tema está activo.
 - **Mobile first**; verificar en 375, 768, 1024 y 1440 px.
+- **Aparición al scrollear:** agregar la clase `reveal` (definida en `global.css`) a tarjetas y bloques de contenido para que entren subiendo y agrandándose con el scroll (CSS scroll-driven animations, sin JS). No usarla en el Hero. Con `prefers-reduced-motion` se desactiva.
 - **Imágenes:** ilustraciones vectoriales (SVG) que representen al usuario, no fotos de stock. **Logos de tecnologías:** se guardan como datos en `src/data/techLogos.js` (path SVG de Simple Icons, CC0, + color de marca) y se dibujan con `<TechLogo id="react" />`, que usa `currentColor`. Las redes sociales están en `src/data/socialLinks.js` (LinkedIn es un dibujo propio porque no está en Simple Icons) y ambos usan `<BrandIcon />`. Para sumar uno, copiar el `path` del SVG de simpleicons.org. La CSP bloquea badges externos como shields.io, y Lucide no incluye logos de marcas.
 
 ### Tema sin parpadeo

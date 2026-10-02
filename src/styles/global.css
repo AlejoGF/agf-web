@@ -162,13 +162,37 @@ section[id] {
   border: 0;
 }
 
-/* Reducir movimiento: se apagan las animaciones (rebotes, pulsos, fondo animado).
-   Las transiciones cortas de estado (hover, subrayado, colores) se mantienen. */
+/* Aparición al scrollear: el bloque entra subiendo, se agranda y gana opacidad
+   siguiendo el scroll (scroll-driven animations, sin JavaScript). Si el navegador
+   no lo soporta, el bloque se ve normal. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    /* Termina cuando el bloque ya recorrió un tercio de la pantalla */
+    animation-range: entry 0% cover 35%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(4rem) scale(0.88);
+  }
+}
+
+/* Reducir movimiento: se apagan las animaciones (rebotes, pulsos, fondo animado,
+   aparición al scrollear). Las transiciones cortas de estado (hover, subrayado,
+   colores) se mantienen. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    animation: none !important;
   }
 }
