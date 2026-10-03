@@ -20,8 +20,9 @@ npm-debug.log*
 .vercel
 .wrangler
 
-# Claude Code (config local)
+# Claude Code (config local y skills de diseño de terceros, se instalan en cada máquina)
 .claude/settings.local.json
+.claude/skills/
 
 # Editor / SO
 .vscode/*
