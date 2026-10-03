@@ -1,0 +1,68 @@
+.education__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.education__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.education__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Íconos cuadrados con su propio fondo: llenan el cuadrado redondeado */
+.education__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.education__years {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.education__title {
+  font-size: var(--text-lg);
+}
+
+.education__institution {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary-text);
+}
+
+/* 2 columnas en tablet y 3 en desktop; el título de grado ocupa dos */
+@media (min-width: 768px) {
+  .education__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .education__card--featured {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .education__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
