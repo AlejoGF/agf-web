@@ -128,15 +128,15 @@
   left: var(--space-3);
   height: 2px;
   border-radius: var(--radius-full);
-  /* Siempre el color del texto: violeta si es la sección activa, el del hover si no */
-  background-color: currentColor;
+  /* Siempre violeta (en oscuro el texto activo es claro y la línea marca la sección) */
+  background-color: var(--color-primary);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .site-header__link[aria-current='true'] {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .site-header__link:hover::after,
@@ -169,7 +169,7 @@
 }
 
 .site-header__icon-button:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   background-color: var(--color-primary-soft);
 }
 
@@ -246,7 +246,7 @@
 
 .mobile-menu__link:hover,
 .mobile-menu__link[aria-current='true'] {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   background-color: var(--color-primary-soft);
 }
 

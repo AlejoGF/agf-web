@@ -93,13 +93,13 @@ img {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   text-underline-offset: 0.2em;
   transition: color var(--duration-fast) var(--ease-out);
 }
 
 a:hover {
-  color: var(--color-primary-hover);
+  color: var(--color-primary-text-hover);
 }
 
 button {
@@ -135,6 +135,17 @@ button {
 
 /* Layout base de las secciones de la home. Las secciones quedan visibles
    debajo del header fijo al navegar con anclas. */
+/* Header, contenido y footer en columna: el footer queda abajo aunque la página sea corta */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1;
+}
+
 main > section {
   max-width: var(--container-max);
   margin-inline: auto;

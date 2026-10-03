@@ -17,7 +17,7 @@
 }
 
 .language-toggle:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   background-color: var(--color-primary-soft);
 }
 

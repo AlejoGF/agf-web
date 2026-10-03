@@ -20,7 +20,7 @@
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
   background-color: var(--color-primary-soft);
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
 }
@@ -59,7 +59,7 @@
   margin-top: var(--space-4);
   font-family: var(--font-heading);
   font-size: var(--text-xl);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold); /* texto grande: el violeta cumple 3:1 en oscuro */
   color: var(--color-primary);
 }
 
