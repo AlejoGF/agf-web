@@ -12,7 +12,8 @@
     "skipToContent": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "downloadCv": "Download CV"
+    "cv": "Resume",
+    "viewCv": "View resume"
   },
   "sections": {
     "hero": "Home",
@@ -27,15 +28,16 @@
     "back": "Back to projects"
   },
   "notFound": {
-    "title": "Page not found",
-    "back": "Back to home"
+    "title": "You're lost, but not that much",
+    "text": "This page doesn't exist. Choose where to go:",
+    "home": "Home",
+    "linksLabel": "Quick links"
   },
   "hero": {
     "available": "Available for new projects",
     "name": "Alejo Gonzalez Fittipaldi",
     "role": "UX/UI Designer & Frontend Developer",
     "lead": "I combine UX/UI design, frontend development and product thinking to build websites and online stores.",
-    "ctaProjects": "View projects",
     "ctaContact": "Contact me",
     "scrollDown": "Go to the next section"
   },
@@ -62,5 +64,27 @@
   },
   "common": {
     "newTab": "opens in a new tab"
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "love": "love",
+    "and": "and",
+    "coffee": "coffee"
+  },
+  "contact": {
+    "title": "Let's talk.",
+    "subtitle": "Have a project or an opportunity? Get in touch.",
+    "copy": "Copy email",
+    "copied": "Copied!",
+    "backToTop": "Back to top",
+    "whatsappMessage": "Hi Alejo, I saw your portfolio and I'd like to talk with you.",
+    "emailSubject": "Contact from alejogf.com",
+    "cv": "Resume"
+  },
+  "resume": {
+    "pageTitle": "Resume",
+    "toolbarLabel": "Resume options",
+    "print": "Print",
+    "download": "Download PDF"
   }
 }

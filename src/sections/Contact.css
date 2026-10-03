@@ -1,0 +1,133 @@
+/* Tarjeta de cierre, estilo editorial: mismo fondo que el header y las tarjetas */
+.contact__card {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-12) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+/* Etiquetas chicas en mayúsculas: "Copiar email" y los links */
+.contact__copy,
+.contact__link {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.12em;
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+}
+
+.contact__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+/* Mail con línea fina debajo y "Copiar email" a la derecha */
+.contact__email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--space-6);
+  margin-top: var(--space-6);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact__email a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 0.9rem + 1.6vw, 2rem);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact__email a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.contact__copy {
+  min-height: var(--tap-target);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Fila de links: logo + texto chico, sin fondo */
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-6);
+  margin-top: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.contact__copy:hover,
+.contact__link:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.contact__link svg {
+  flex-shrink: 0;
+}
+
+/* Volver arriba, con la flecha animada (se detiene con "reducir movimiento") */
+.contact__top-arrow {
+  animation: contact-arrow-up 1.6s var(--ease-in-out) infinite;
+}
+
+@keyframes contact-arrow-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(calc(-1 * var(--space-1)));
+  }
+}
+
+@media (min-width: 768px) {
+  .contact__card {
+    padding: var(--space-12);
+  }
+
+  /* "Volver arriba" queda al final de la fila, a la derecha */
+  .contact__top-item {
+    margin-left: auto;
+  }
+}
+
+.contact__card :focus-visible {
+  border-radius: var(--radius-sm);
+}

@@ -1,21 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Download, Menu, X } from 'lucide-react'
+import { FileText, Menu, X } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation.js'
 import { useActiveSection } from '../hooks/useActiveSection.js'
 import LanguageToggle from './LanguageToggle.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import './Header.css'
 
-const NAV_ITEMS = ['about', 'experience', 'education', 'skills', 'projects', 'contact']
+// Proyectos vuelve en la etapa 2
+const NAV_ITEMS = ['about', 'experience', 'education', 'skills', 'contact']
 const DESKTOP_QUERY = '(min-width: 1024px)'
-const CV_FILES = {
-  es: '/cv/alejo-gonzalez-fittipaldi-cv-es.pdf',
-  en: '/cv/alejo-gonzalez-fittipaldi-cv-en.pdf',
-}
 
 export default function Header() {
-  const { t, language } = useTranslation()
+  const { t } = useTranslation()
   const { pathname } = useLocation()
   const activeSection = useActiveSection(NAV_ITEMS, pathname === '/')
   const [isScrolled, setIsScrolled] = useState(false)
@@ -118,9 +115,17 @@ export default function Header() {
         <div className="site-header__actions">
           <LanguageToggle />
           <ThemeToggle />
-          <a className="site-header__cv-button" href={CV_FILES[language]} download title={t('nav.downloadCv')}>
-            <Download size={18} aria-hidden="true" />
-            <span className="site-header__cv-label">{t('nav.downloadCv')}</span>
+          {/* El CV se abre en otra pestaña */}
+          <a
+            href="/cv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-header__cv-button"
+            aria-label={`${t('nav.viewCv')} (${t('common.newTab')})`}
+            title={t('nav.viewCv')}
+          >
+            <FileText size={18} aria-hidden="true" />
+            <span className="site-header__cv-label">{t('nav.cv')}</span>
           </a>
           <button
             ref={menuButtonRef}
@@ -138,9 +143,10 @@ export default function Header() {
 
       <nav id="mobile-menu" className="mobile-menu" aria-label={t('nav.label')} hidden={!isMenuOpen}>
         <ul className="mobile-menu__list">{renderLinks('mobile-menu__link')}</ul>
-        <a className="mobile-menu__cv" href={CV_FILES[language]} download onClick={closeMenu}>
-          <Download size={18} aria-hidden="true" />
-          {t('nav.downloadCv')}
+        <a href="/cv" target="_blank" rel="noopener noreferrer" className="mobile-menu__cv" onClick={closeMenu}>
+          <FileText size={18} aria-hidden="true" />
+          {t('nav.viewCv')}
+          <span className="visually-hidden"> ({t('common.newTab')})</span>
         </a>
       </nav>
       <div className="mobile-menu__backdrop" hidden={!isMenuOpen} onClick={closeMenu} />

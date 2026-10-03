@@ -1,2 +1,2 @@
-// Placeholder: se reemplaza con los proyectos reales.
-export const projects = [{ slug: 'proyecto-demo' }]
+// Proyectos: vuelven en la etapa 2. Mientras la lista esté vacía, /proyectos/:slug muestra la 404.
+export const projects = []

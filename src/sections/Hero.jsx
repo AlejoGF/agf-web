@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, FileText } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation.js'
 import './Hero.css'
 
@@ -18,13 +18,15 @@ export default function Hero() {
       <p className="hero__lead">{t('hero.lead')}</p>
 
       <div className="hero__actions">
-        <Link to="/#projects" className="hero__button hero__button--primary">
-          {t('hero.ctaProjects')}
+        <Link to="/#contact" className="hero__button hero__button--primary">
+          {t('hero.ctaContact')}
           <ArrowRight size={18} aria-hidden="true" />
         </Link>
-        <Link to="/#contact" className="hero__button hero__button--secondary">
-          {t('hero.ctaContact')}
-        </Link>
+        <a href="/cv" target="_blank" rel="noopener noreferrer" className="hero__button hero__button--secondary">
+          <FileText size={18} aria-hidden="true" />
+          {t('nav.viewCv')}
+          <span className="visually-hidden"> ({t('common.newTab')})</span>
+        </a>
       </div>
 
       <Link to="/#about" className="hero__scroll" aria-label={t('hero.scrollDown')} title={t('hero.scrollDown')}>
