@@ -31,6 +31,13 @@
   --color-on-cta: #ffffff;
   --color-cta-pill: #4c46be;      /* botones: texto blanco 7.2:1 */
   --color-cta-pill-hover: #443ea8;
+  /* Página /cv: documento siempre claro, igual en ambos temas (como el PDF) */
+  --resume-bg: #e9e9ee;
+  --resume-paper: #ffffff;
+  --resume-ink: #16161d;      /* 17.3:1 sobre el papel */
+  --resume-muted: #56566b;    /* 7.4:1 */
+  --resume-line: #dcdce6;
+  --resume-accent: #5a52e0;   /* 5.65:1, títulos de sección */
 
   /* Sombras: suaves pero visibles, en capas */
   --shadow-color: 240 20% 20%;
