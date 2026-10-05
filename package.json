@@ -1,7 +1,10 @@
 {
   "name": "agf-web",
+  "version": "1.0.0",
+  "description": "Portfolio personal de Alejo Gonzalez Fittipaldi, UX/UI Designer & Frontend Developer.",
+  "author": "Alejo Gonzalez Fittipaldi (https://alejogf.com)",
+  "homepage": "https://alejogf.com",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
