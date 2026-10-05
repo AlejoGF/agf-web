@@ -22,26 +22,28 @@ No hay tests configurados.
 - **Stack fijo:** React 19 + Vite, JavaScript (sin TypeScript), React Router DOM, Lucide React.
 - **No instalar dependencias nuevas sin consultar al usuario** (librerías de i18n, UI, animación, etc.).
 - **CSS plano, un archivo `.css` por componente**, importado desde el propio componente. Nada de Tailwind, shadcn ni librerías de UI.
-- **CV descargable** en PDF (ES y EN) desde `public/cv/`.
+- **CV** en la página `/cv` y descargable en PDF (ES y EN) desde `public/cv/`. Si cambia el CV, actualizar el PDF y `src/data/resume.js`.
 - **Contacto solo con links** (`mailto:` y WhatsApp `wa.me`). No agregar formularios.
 
 ## Arquitectura
 
 - `src/main.jsx` importa los estilos globales (`fonts.css` → `tokens.css` → `global.css`) y monta `ThemeProvider` → `LanguageProvider` → `<BrowserRouter>` → `App.jsx`, que define las rutas:
-  - `/` → `pages/Home.jsx`, que compone las secciones de `src/sections/` en orden: Hero, About, Experience, Education, Skills, Projects, Contact (cada una es un `<section id="...">` para navegación por anclas).
+  - `/` → `pages/Home.jsx`, que compone las secciones de `src/sections/` en orden: Hero, About, Experience, Education, Skills, Contact (cada una es un `<section id="...">` para navegación por anclas). Projects vuelve en la etapa 2 (hoy `projects` está vacío y fuera del nav).
+  - `/cv` → `pages/Resume.jsx`: el CV como hoja A4 en el idioma activo (texto en `src/data/resume.js`, igual al de los PDF de `public/cv/`), con botones Imprimir y Descargar PDF. Se renderiza sin Header ni Footer y siempre en claro (tokens `--resume-*`); al imprimir entra en una sola hoja.
   - `/proyectos/:slug` → `pages/ProjectPage.jsx`, busca el proyecto por `slug` en `src/data/projects.js`; si no existe renderiza `NotFound`.
   - `*` → `pages/NotFound.jsx`.
-- `src/data/projects.js` es la única fuente de datos de proyectos (la sección Projects y la página de caso de estudio leen de ahí).
+- **Datos en `src/data/`:** el contenido de cada sección vive en su archivo (`experience.js`, `education.js`, `skills.js`, `contact.js`, `projects.js`) y el componente solo lo recorre. Los textos traducibles van en los `.json` (o con `{ es, en }` en el dato); `contact.js` tiene el mail, WhatsApp, los links `getMailtoUrl` / `getWhatsappUrl` y los PDF del CV (`cvFiles`, que usa la página `/cv`). Los botones de CV del Header, Hero y Contact llevan a `/cv`.
+- `App.jsx` envuelve las páginas con `Header` y `Footer`; `#root` es una columna flex y `main` ocupa el espacio libre, así el footer queda abajo en páginas cortas (la 404 entra sin scroll).
 - **Contextos (tema e idioma):** cada uno se divide en `context/XContext.js` (solo `createContext`), `context/XProvider.jsx` (el componente con el estado) y `hooks/useX.js` (el hook que lo consume). La división es para que oxlint (`react/only-export-components`) no marque archivos que exportan componentes y no-componentes juntos. Los componentes usan siempre el hook (`useTheme`, `useTranslation`), nunca el contexto directo.
 - `App.jsx` renderiza `ScrollManager` (scroll a `/#seccion` y al cambiar de página: animado propio con easing, o fundido con View Transitions si hay `prefers-reduced-motion`) y `Header` (cápsula flotante centrada: logo, links a secciones con la activa resaltada vía `useActiveSection`, `LanguageToggle`, `ThemeToggle`, botón de CV en prueba; en < 1024px los links pasan a un menú desplegable).
 - Cada página tiene un único `<main id="main" tabIndex={-1}>`, destino del link "Saltar al contenido".
 
 ## Diseño
 
-- Usar la skill **ui-ux-pro-max** para decisiones de diseño, pero implementar siempre en React + CSS plano (ignorar las partes de Tailwind/shadcn de las skills en `.claude/skills/`).
+- Usar la skill **ui-ux-pro-max** para decisiones de diseño, pero implementar siempre en React + CSS plano (ignorar sus partes de Tailwind/shadcn). Las skills de diseño se instalan a nivel de usuario y no se incluyen en el repo.
 - **Estilo:** minimalista moderno. Sombras suaves pero visibles (`--shadow-sm/md/lg`), pocos bordes, esquinas redondeadas, animaciones cortas y sutiles.
 - **Design tokens:** todos los colores, tipografías, espaciados, radios, sombras y duraciones son variables CSS en `:root` dentro de `src/styles/tokens.css`. Nunca hardcodear esos valores en los `.css` de componentes. `src/styles/global.css` queda para reset y estilos base (incluye `:focus-visible`, `prefers-reduced-motion` y la clase `.visually-hidden`).
-- **Color:** un violeta por tema, en `--color-primary`: `#5a52e0` en claro y `#8b85ff` en oscuro (en oscuro los botones primarios llevan texto oscuro, `--color-on-primary`). `#6c63ff` (`--color-brand`) es el color de marca y es **solo decorativo**: no cumple 4.5:1 como texto. Verificar el contraste de cualquier color nuevo en ambos temas.
+- **Color:** un solo violeta, `#5a52e0` (`--color-primary`), en los dos temas, siempre con texto blanco encima. Sobre el fondo oscuro da 3.4:1: sirve para fondos, bordes, íconos y texto grande, pero **el texto chico en violeta usa `--color-primary-text`** (violeta en claro, casi blanco en oscuro). `#6c63ff` (`--color-brand`) es solo decorativo (logo, favicon) y el anillo de foco en oscuro. Verificar el contraste de cualquier color nuevo en ambos temas.
 - **Tipografía:** Space Grotesk (títulos, `--font-heading`) y DM Sans (texto, `--font-body`), de Google Fonts pero servidas desde `public/fonts/` (`src/styles/fonts.css`); subset latino, fuentes variables.
 - **Logo:** texto "AGF" en la fuente de títulos seguido de un "." en `--color-primary`.
 - **Modo oscuro:** `[data-theme="dark"]` en `<html>` redefine las mismas variables; los componentes no necesitan saber qué tema está activo.
