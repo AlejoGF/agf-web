@@ -134,3 +134,16 @@
     gap: var(--space-16);
   }
 }
+
+/* Mobile: tarjetas de datos, redes y ubicación centradas (el texto largo de arriba queda a la izquierda) */
+@media (max-width: 767px) {
+  .about__stat,
+  .about__info-block {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about__info {
+    justify-content: center;
+  }
+}

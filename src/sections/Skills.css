@@ -75,3 +75,14 @@
 [data-theme='dark'] .skills__chip--highlight svg {
   color: var(--color-primary-text);
 }
+
+/* Mobile: título y chips de cada grupo centrados */
+@media (max-width: 767px) {
+  .skills__group-title {
+    text-align: center;
+  }
+
+  .skills__list {
+    justify-content: center;
+  }
+}

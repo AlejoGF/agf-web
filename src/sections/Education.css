@@ -66,3 +66,16 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Mobile: tarjetas centradas, con el logo arriba y los años debajo */
+@media (max-width: 767px) {
+  .education__card {
+    align-items: center;
+    text-align: center;
+  }
+
+  .education__top {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

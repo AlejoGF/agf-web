@@ -131,3 +131,63 @@
 .contact__card :focus-visible {
   border-radius: var(--radius-sm);
 }
+
+/* Mobile: tarjeta centrada; los links pasan a ser círculos de 44px con solo el ícono.
+   El nombre queda oculto a la vista pero lo siguen leyendo los lectores de pantalla. */
+@media (max-width: 767px) {
+  .contact__card {
+    text-align: center;
+  }
+
+  .contact__email {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact__email a {
+    justify-content: center;
+  }
+
+  .contact__links {
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .contact__link:not(.contact__top) {
+    justify-content: center;
+    width: var(--tap-target);
+    height: var(--tap-target);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+  }
+
+  .contact__link:not(.contact__top):hover {
+    border-color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .contact__link:not(.contact__top) svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .contact__link-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* Volver arriba: en su propia fila, centrado */
+  .contact__top-item {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact__card :focus-visible {
+    border-radius: var(--radius-full);
+  }
+}

@@ -54,23 +54,25 @@ export default function Contact() {
 
           <ul className="contact__links">
             <li>
-              <a href={getWhatsappUrl(t('contact.whatsappMessage'))} {...external} className="contact__link">
+              <a href={getWhatsappUrl(t('contact.whatsappMessage'))} {...external} className="contact__link" title="WhatsApp">
                 <BrandIcon path={contact.whatsapp.path} name="WhatsApp" size={14} decorative />
-                WhatsApp
+                <span className="contact__link-label">WhatsApp</span>
+                <span className="visually-hidden"> ({t('common.newTab')})</span>
               </a>
             </li>
             {socialLinks.map((link) => (
               <li key={link.id}>
-                <a href={link.url} {...external} className="contact__link">
+                <a href={link.url} {...external} className="contact__link" title={link.name}>
                   <BrandIcon path={link.path} name={link.name} size={14} decorative />
-                  {link.name}
+                  <span className="contact__link-label">{link.name}</span>
+                  <span className="visually-hidden"> ({t('common.newTab')})</span>
                 </a>
               </li>
             ))}
             <li>
-              <a href="/cv" {...external} className="contact__link">
+              <a href="/cv" {...external} className="contact__link" title={t('contact.cv')}>
                 <FileText size={14} aria-hidden="true" />
-                {t('contact.cv')}
+                <span className="contact__link-label">{t('contact.cv')}</span>
                 <span className="visually-hidden"> ({t('common.newTab')})</span>
               </a>
             </li>

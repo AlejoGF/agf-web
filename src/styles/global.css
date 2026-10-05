@@ -162,6 +162,13 @@ section[id] {
   font-size: var(--text-3xl);
 }
 
+/* Mobile: títulos de sección centrados (los párrafos largos quedan a la izquierda para leerse mejor) */
+@media (max-width: 767px) {
+  .section-title {
+    text-align: center;
+  }
+}
+
 /* Texto solo para lectores de pantalla */
 .visually-hidden {
   position: absolute;
