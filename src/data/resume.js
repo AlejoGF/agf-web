@@ -42,7 +42,7 @@ export const resume = {
             title: 'Web Designer & eCommerce Developer',
             period: 'jun 2024 – oct 2026',
             bullets: [
-              'Lideré de punta a punta los proyectos web de más de 50 clientes retail, wholesale y B2B (OneClick, Kion, Axel SA, entre otros).',
+              'Lideré end-to-end los proyectos web de más de 50 clientes retail, wholesale y B2B (OneClick, Kion, Axel SA, entre otros).',
               'Gestioné el ciclo completo: discovery, scoping, diseño UX/UI, desarrollo frontend (HTML, CSS, JavaScript, QWeb), configuración de eCommerce, go-live y soporte.',
               'Lideré el rebranding del sitio corporativo de Adhoc y sus versiones para España, Chile y Uruguay, con formularios de lead generation integrados al CRM.',
             ],
@@ -57,7 +57,7 @@ export const resume = {
           {
             title: 'UX Developer',
             bullets: [
-              'Diseñé y desarrollé interfaces responsive a partir de prototipos en Figma, con HTML5, CSS3 y JavaScript.',
+              'Diseñé y desarrollé interfaces responsive a partir de prototipos en Figma, con HTML5, CSS3, JavaScript y React.',
             ],
           },
         ],
@@ -142,7 +142,7 @@ export const resume = {
         roles: [
           {
             title: 'UX Developer',
-            bullets: ['Designed and built responsive interfaces from Figma prototypes with HTML5, CSS3 and JavaScript.'],
+            bullets: ['Designed and built responsive interfaces from Figma prototypes with HTML5, CSS3, JavaScript and React.'],
           },
         ],
       },
