@@ -72,7 +72,7 @@ No hay tests configurados.
 ## Seguridad y deploy
 
 - `vercel.json` (Vercel) y `public/_headers` (Cloudflare Pages) definen **los mismos** headers de seguridad; si se cambia uno, cambiar el otro. `vercel.json` además hace el rewrite SPA a `index.html` (Cloudflare Pages lo hace solo si no hay `404.html`).
-- CSP: `script-src 'self'` estricto (sin scripts inline); `style-src 'self' 'unsafe-inline'` para permitir `style={{...}}` con valores dinámicos; el resto `'self'` (imágenes también `data:`). Por lo tanto, fuentes, imágenes e íconos se sirven desde el propio sitio (nada de Google Fonts ni CDNs).
+- CSP: `script-src 'self'` estricto (sin scripts inline), más `static.cloudflareinsights.com` (y `cloudflareinsights.com` en `connect-src`) para Cloudflare Web Analytics, que no usa cookies; `style-src 'self' 'unsafe-inline'` para permitir `style={{...}}` con valores dinámicos; el resto `'self'` (imágenes también `data:`). Por lo tanto, fuentes, imágenes e íconos se sirven desde el propio sitio (nada de Google Fonts ni CDNs).
 - `style={{...}}` solo para valores dinámicos (p. ej. una variable CSS calculada); los estilos fijos van en `.css`.
 - Links externos siempre con `target="_blank" rel="noopener noreferrer"`.
 - Nunca `dangerouslySetInnerHTML` ni `eval`.
