@@ -41,7 +41,7 @@ export const education = [
     title: { es: 'Licenciatura en Diseño Gráfico', en: "Bachelor's Degree in Graphic Design" },
     institution: 'Universidad Abierta Interamericana',
     logo: uaiLogo,
-    years: '2014 — 2019',
+    years: '2014 — 2017',
     featured: true, // título de grado: ocupa dos columnas
   },
 ]

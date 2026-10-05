@@ -15,7 +15,7 @@ export const experience = [
     end: '2026-10',
     highlights: {
       es: [
-        'Lideré de punta a punta los proyectos web de más de 50 clientes de retail, mayoristas y B2B (OneClick, Kion, Axel SA, entre otros): discovery, scoping, diseño UX/UI, desarrollo frontend (HTML, CSS, JavaScript, QWeb), configuración de eCommerce, go-live y soporte, acompañando a cada cliente en sus prioridades de negocio.',
+        'Lideré end-to-end los proyectos web de más de 50 clientes de retail, mayoristas y B2B (OneClick, Kion, Axel SA, entre otros): discovery, scoping, diseño UX/UI, desarrollo frontend (HTML, CSS, JavaScript, QWeb), configuración de eCommerce, go-live y soporte, acompañando a cada cliente en sus prioridades de negocio.',
         'Lideré el área técnico-funcional de Website & eCommerce: más de 70 casos resueltos de producto, personalizaciones, pasarelas de pago (Payway, Mercado Pago), envíos (Andreani, Envia.com), stock y catálogo.',
         'Diseñé la metodología de implementación web de la empresa (discovery, entregables estándar, estimaciones y quickstarts de scoping) y la certificación interna de Website & eCommerce para el equipo y los clientes.',
         'Lideré el rebranding del sitio corporativo de Adhoc y sus versiones para España, Chile y Uruguay, con formularios de lead generation integrados al CRM.',
@@ -39,10 +39,10 @@ export const experience = [
     start: '2024-01',
     end: '2024-06',
     highlights: {
-      es: ['Diseñé y desarrollé interfaces responsive a partir de prototipos en Figma, con HTML5, CSS3 y JavaScript.'],
-      en: ['Designed and built responsive interfaces from Figma prototypes, using HTML5, CSS3 and JavaScript.'],
+      es: ['Diseñé y desarrollé interfaces responsive a partir de prototipos en Figma, con HTML5, CSS3, JavaScript y React.'],
+      en: ['Designed and built responsive interfaces from Figma prototypes, using HTML5, CSS3, JavaScript and React.'],
     },
-    tech: ['figma', 'javascript', 'html5', 'css3'],
+    tech: ['figma', 'react', 'javascript', 'html5', 'css3'],
   },
   {
     id: 'brunetti',
@@ -53,7 +53,7 @@ export const experience = [
     end: '2023-12',
     highlights: {
       es: [
-        'Lideré el diseño UX/UI de punta a punta de los sitios de catálogo y eCommerce para Argentina y España, en desktop y mobile, sobre WordPress y Magento.',
+        'Lideré el diseño UX/UI end-to-end de los sitios de catálogo y eCommerce para Argentina y España, en desktop y mobile, sobre WordPress y Magento.',
         'Conduje investigación de usuarios, rediseñé la arquitectura de información y creé wireframes y prototipos en Figma validados con stakeholders.',
         'Diseñé piezas digitales e impresas y gestioné el catálogo web de productos.',
       ],
