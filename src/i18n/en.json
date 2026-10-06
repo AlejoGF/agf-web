@@ -86,5 +86,11 @@
     "toolbarLabel": "Resume options",
     "print": "Print",
     "download": "Download PDF"
+  },
+  "projects": {
+    "badge": "In progress",
+    "title": "I'm putting together my case studies",
+    "text": "Soon you'll find the process behind each project here. In the meantime, my design work is on Behance.",
+    "cta": "View projects on Behance"
   }
 }

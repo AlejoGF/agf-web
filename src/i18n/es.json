@@ -86,5 +86,11 @@
     "toolbarLabel": "Opciones del CV",
     "print": "Imprimir",
     "download": "Descargar PDF"
+  },
+  "projects": {
+    "badge": "En preparación",
+    "title": "Estoy armando los casos de estudio",
+    "text": "Pronto vas a poder ver acá el proceso detrás de cada proyecto. Mientras tanto, mis trabajos de diseño están en Behance.",
+    "cta": "Ver proyectos en Behance"
   }
 }

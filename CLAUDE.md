@@ -28,7 +28,7 @@ No hay tests configurados.
 ## Arquitectura
 
 - `src/main.jsx` importa los estilos globales (`fonts.css` → `tokens.css` → `global.css`) y monta `ThemeProvider` → `LanguageProvider` → `<BrowserRouter>` → `App.jsx`, que define las rutas:
-  - `/` → `pages/Home.jsx`, que compone las secciones de `src/sections/` en orden: Hero, About, Experience, Education, Skills, Contact (cada una es un `<section id="...">` para navegación por anclas). Projects vuelve en la etapa 2 (hoy `projects` está vacío y fuera del nav).
+  - `/` → `pages/Home.jsx`, que compone las secciones de `src/sections/` en orden: Hero, About, Experience, Education, Skills, Projects, Contact (cada una es un `<section id="...">` para navegación por anclas). Por ahora Projects es una tarjeta "en preparación" con el link a Behance; los casos de estudio (`src/data/projects.js`, hoy vacío) llegan en la etapa 2.
   - `/cv` → `pages/Resume.jsx`: el CV como hoja A4 en el idioma activo (texto en `src/data/resume.js`, igual al de los PDF de `public/cv/`), con botones Imprimir y Descargar PDF. Se renderiza sin Header ni Footer y siempre en claro (tokens `--resume-*`); al imprimir entra en una sola hoja.
   - `/proyectos/:slug` → `pages/ProjectPage.jsx`, busca el proyecto por `slug` en `src/data/projects.js`; si no existe renderiza `NotFound`.
   - `*` → `pages/NotFound.jsx`.

@@ -7,8 +7,7 @@ import LanguageToggle from './LanguageToggle.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import './Header.css'
 
-// Proyectos vuelve en la etapa 2
-const NAV_ITEMS = ['about', 'experience', 'education', 'skills', 'contact']
+const NAV_ITEMS = ['about', 'experience', 'education', 'skills', 'projects', 'contact']
 const DESKTOP_QUERY = '(min-width: 1024px)'
 
 export default function Header() {
