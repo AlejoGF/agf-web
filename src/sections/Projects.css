@@ -1,86 +1,170 @@
-/* Proyectos (etapa 1): tarjeta "en preparación" con el link a Behance */
-.projects__card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Proyectos: una tarjeta por proyecto con el color de su marca.
+   En escritorio se apilan al scrollear (position: sticky). Los colores llegan desde
+   src/data/projects.js como --card-bg y --card-fg, por eso no están en tokens.css. */
+.projects__stack {
+  display: grid;
   gap: var(--space-6);
-  padding: var(--space-8) var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.projects__text {
+.projects__card {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+  color: var(--card-fg);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.projects__card:hover {
+  color: var(--card-fg);
+}
+
+.projects__card:focus-visible {
+  outline-offset: 4px;
+}
+
+.projects__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.projects__body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-6);
 }
 
-.projects__badge {
-  display: inline-flex;
+.projects__kind {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  background-color: var(--color-primary-soft);
-  color: var(--color-primary-text);
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.projects__title {
-  font-size: var(--text-2xl);
+.projects__concept {
+  padding: 0.125rem var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
 }
 
-.projects__description {
-  color: var(--color-text-muted);
+.projects__name {
+  margin-top: var(--space-2);
+  font-size: var(--text-3xl);
+  letter-spacing: var(--tracking-tight);
 }
 
-.projects__cta {
+.projects__summary {
+  max-width: 40ch;
+  margin-top: var(--space-3);
+}
+
+.projects__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.projects__count {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.projects__link {
   display: inline-flex;
-  flex-shrink: 0;
   align-items: center;
   gap: var(--space-2);
   min-height: var(--tap-target);
+  font-weight: var(--weight-semibold);
+}
+
+.projects__link svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.projects__card:hover .projects__link svg,
+.projects__card:focus-visible .projects__link svg {
+  transform: translate(2px, -2px);
+}
+
+/* Link a todos los proyectos, como los botones secundarios del sitio */
+.projects__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: fit-content;
+  min-height: var(--tap-target);
+  margin: var(--space-8) auto 0;
   padding-inline: var(--space-6);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
+  background-color: var(--color-surface);
+  color: var(--color-text);
   font-weight: var(--weight-semibold);
   text-decoration: none;
   box-shadow: var(--shadow-sm);
   transition:
-    background-color var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
-.projects__cta:hover {
-  background-color: var(--color-primary-hover);
-  color: var(--color-on-primary);
+.projects__more:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
   box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
 }
 
-.projects__cta:focus-visible {
-  border-radius: var(--radius-full);
-}
-
-/* Desktop: texto a la izquierda y botón a la derecha */
 @media (min-width: 768px) {
-  .projects__card {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: var(--space-12);
-    text-align: left;
+  .projects__body {
+    padding: var(--space-8);
   }
 
-  .projects__text {
-    align-items: flex-start;
+  .projects__more {
+    margin-left: 0;
+  }
+}
+
+/* Escritorio: imagen y texto lado a lado */
+@media (min-width: 1024px) {
+  .projects__card {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  .projects__cover {
+    height: 100%;
+  }
+
+  .projects__name {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* Solo con pantalla alta: si la tarjeta no entra entera, la siguiente taparía el link de la anterior */
+@media (min-width: 1024px) and (min-height: 640px) {
+  .projects__item {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-4) + var(--index) * var(--space-3));
+  }
+
+  /* Al navegar con teclado hacia atrás, la tarjeta con foco pasa adelante para no quedar tapada */
+  .projects__item:focus-within {
+    z-index: 1;
   }
 }
