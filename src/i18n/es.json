@@ -88,9 +88,8 @@
     "download": "Descargar PDF"
   },
   "projects": {
-    "badge": "En preparación",
-    "title": "Estoy armando los casos de estudio",
-    "text": "Pronto vas a poder ver acá el proceso detrás de cada proyecto. Mientras tanto, mis trabajos de diseño están en Behance.",
-    "cta": "Ver proyectos en Behance"
+    "concept": "Rediseño conceptual",
+    "viewCase": "Ver caso en Behance",
+    "more": "Todos los proyectos en Behance"
   }
 }
