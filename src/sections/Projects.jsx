@@ -37,10 +37,7 @@ export default function Projects() {
               />
               <div className="projects__body">
                 <div>
-                  <p className="projects__kind">
-                    {project.kind[language]}
-                    {project.concept && <span className="projects__concept">{t('projects.concept')}</span>}
-                  </p>
+                  <p className="projects__kind">{project.kind[language]}</p>
                   <h3 className="projects__name" translate="no">
                     {project.name}
                   </h3>
