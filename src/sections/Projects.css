@@ -163,8 +163,9 @@
     top: calc(var(--header-height) + var(--space-4) + var(--index) * var(--space-3));
   }
 
-  /* Al navegar con teclado hacia atrás, la tarjeta con foco pasa adelante para no quedar tapada */
-  .projects__item:focus-within {
+  /* Al navegar con teclado hacia atrás, la tarjeta con foco pasa adelante para no quedar tapada.
+     Solo con foco de teclado: con :focus-within, la tarjeta clickeada quedaba arriba de las demás */
+  .projects__item:has(.projects__card:focus-visible) {
     z-index: 1;
   }
 }
