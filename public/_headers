@@ -6,9 +6,8 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
   X-Frame-Options: DENY
 
-# Caché: los archivos de /assets/ cambian de nombre en cada build, se pueden guardar un año
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
+# Caché: /assets/ queda con el valor por defecto de Cloudflare (el navegador revalida en cada visita).
+# No usar "immutable": durante un deploy, un archivo que todavía no está disponible se responde con
+# index.html, y con caché de un año el navegador guarda esa página como si fuera el CSS o el JS (sitio en blanco).
 /fonts/*
   Cache-Control: public, max-age=2592000
